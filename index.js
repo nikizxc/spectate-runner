@@ -7,7 +7,7 @@ const runner = async () => {
       headers: {
         Authorization: `Bearer ${process.env.SECRET_KEY}`,
       },
-      signal: AbortSignal.timeout(5 * 60 * 1000),
+      signal: AbortSignal.timeout(10 * 60 * 1000),
     });
 
     if (!res.ok) {
@@ -25,7 +25,7 @@ const runner = async () => {
   } catch (err) {
     if (err.name === "TimeoutError") {
       console.error(
-        "Timeout: It took more than 5 minutes for runner to be completed",
+        "Timeout: It took more than 10 minutes for runner to be completed",
       );
     } else {
       console.error(`Error: type: ${err.name}, message: ${err.message}`);
